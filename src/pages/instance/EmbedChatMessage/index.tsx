@@ -21,8 +21,7 @@ import { ReplyMessageProvider } from "@/contexts/ReplyingMessage/ReplyingMessage
 // import { useWebphone } from "@/contexts/Webphone";
 
 import { api } from "@/lib/queries/api";
-
-// import { TOKEN_ID, getToken } from "@/lib/queries/token";
+import { TOKEN_ID, getToken } from "@/lib/queries/token";
 
 import { connectSocket, disconnectSocket } from "@/services/websocket/socket";
 
@@ -114,9 +113,12 @@ function EmbedChatMessage() {
   useEffect(() => {
     if (!activeInstance) return;
 
-    const serverUrl = "https://icom-socket-gateway.icommarketing.com.br";
+    const serverUrl = getToken(TOKEN_ID.API_URL);
 
-    if (!serverUrl) return;
+    if (!serverUrl) {
+      console.error("API URL not found in localStorage");
+      return;
+    }
 
     const currentToken = localStorage.getItem("accessToken");
 

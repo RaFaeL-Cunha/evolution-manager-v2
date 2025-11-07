@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { verifyCreds } from "@/lib/queries/auth/verifyCreds";
 import { verifyServer } from "@/lib/queries/auth/verifyServer";
 import { logout, saveToken } from "@/lib/queries/token";
+import { useTheme } from "@/components/theme-provider";
 
 const loginSchema = z.object({
   serverUrl: z.string({ required_error: "serverUrl is required" }).url("URL inválida"),
@@ -23,6 +24,7 @@ type LoginSchema = z.infer<typeof loginSchema>;
 function Login() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { theme } = useTheme();
   const loginForm = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -69,7 +71,7 @@ function Login() {
   return (
     <div className="flex min-h-screen flex-col">
       <div className="flex items-center justify-center pt-2">
-        <img className="h-10" src="/assets/images/evolution-logo.png" alt="logo" />
+        <img className="h-10" src={theme === "dark" ? "https://evolution-api.com/files/evo/evolution-logo-white.svg" : "https://evolution-api.com/files/evo/evolution-logo.svg"} alt="logo" />
       </div>
       <div className="flex flex-1 items-center justify-center p-8">
         <Card className="b-none w-[350px] shadow-none">

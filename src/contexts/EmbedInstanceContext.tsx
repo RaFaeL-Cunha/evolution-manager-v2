@@ -28,19 +28,21 @@ export function EmbedInstanceProvider({ children }: { children: React.ReactNode 
     const validateAndFetchInstance = async () => {
       const token = searchParams.get("token");
       const instanceName = searchParams.get("instanceName");
+      const apiUrl = searchParams.get("apiUrl");
 
-      if (!token || !instanceName) {
-        setError("Token e instanceName são obrigatórios");
+      if (!token || !instanceName || !apiUrl) {
+        setError("Token, instanceName e apiUrl são obrigatórios");
         setIsLoading(false);
         return;
       }
 
       try {
-        const apiUrl = "https://integracaov2.icommarketing.com.br";
-        localStorage.setItem(TOKEN_ID.API_URL, apiUrl);
+        // Format URL (remove trailing slash if present)
+        const formattedUrl = apiUrl.endsWith("/") ? apiUrl.slice(0, -1) : apiUrl;
+        localStorage.setItem(TOKEN_ID.API_URL, formattedUrl);
         localStorage.setItem(TOKEN_ID.INSTANCE_TOKEN, token);
 
-        const { data } = await axios.get(`${apiUrl}/instance/fetchInstances?instanceName=${instanceName}`, {
+        const { data } = await axios.get(`${formattedUrl}/instance/fetchInstances?instanceName=${instanceName}`, {
           headers: {
             apikey: token,
           },

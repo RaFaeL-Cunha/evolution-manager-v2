@@ -2,7 +2,9 @@
   "dashboard": {
     "title": "Instancias",
     "search": "Buscar",
-    "status": "Estado"
+    "status": "Estado",
+    "settings": "Configuraciones",
+    "instancesNotFound": "No se encontraron instancias"
   },
   "button": {
     "delete": "Eliminar",

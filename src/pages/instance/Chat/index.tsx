@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useInstance } from "@/contexts/InstanceContext";
 
 import { useFindChats } from "@/lib/queries/chat/findChats";
+import { getToken, TOKEN_ID } from "@/lib/queries/token";
 
 import { Chat as ChatType } from "@/types/evolution.types";
 
@@ -76,7 +77,12 @@ function Chat() {
   useEffect(() => {
     if (!instance?.name) return;
 
-    const serverUrl = "https://integracaov2.icommarketing.com.br";
+    const serverUrl = getToken(TOKEN_ID.API_URL);
+    if (!serverUrl) {
+      console.error("API URL not found in localStorage");
+      return;
+    }
+
     const socket = connectSocket(serverUrl);
 
     // Function to update chats from websocket events

@@ -2,7 +2,9 @@
   "dashboard": {
     "title": "Instâncias",
     "search": "Pesquisar",
-    "status": "Status"
+    "status": "Status",
+    "settings": "Configurações",
+    "instancesNotFound": "Nenhuma instância encontrada"
   },
   "button": {
     "delete": "Excluir",

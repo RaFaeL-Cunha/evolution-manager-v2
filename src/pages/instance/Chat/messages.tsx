@@ -13,6 +13,7 @@ import { useInstance } from "@/contexts/InstanceContext";
 import { useFindChat } from "@/lib/queries/chat/findChat";
 import { useFindMessages } from "@/lib/queries/chat/findMessages";
 import { useSendMessage, useSendMedia } from "@/lib/queries/chat/sendMessage";
+import { getToken, TOKEN_ID } from "@/lib/queries/token";
 
 import { Message } from "@/types/evolution.types";
 
@@ -429,7 +430,12 @@ function Messages({ textareaRef, handleTextareaChange, textareaHeight, lastMessa
   useEffect(() => {
     if (!instance?.name || !remoteJid) return;
 
-    const serverUrl = "https://icom-socket-gateway.icommarketing.com.br";
+    const serverUrl = getToken(TOKEN_ID.API_URL);
+    if (!serverUrl) {
+      console.error("API URL not found in localStorage");
+      return;
+    }
+
     const socket = connectSocket(serverUrl);
 
     // Function to update messages from websocket events

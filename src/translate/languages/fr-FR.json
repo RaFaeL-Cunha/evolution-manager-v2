@@ -2,7 +2,9 @@
   "dashboard": {
     "title": "Instances",
     "search": "Rechercher",
-    "status": "Statut"
+    "status": "Statut",
+    "settings": "Paramètres",
+    "instancesNotFound": "Aucune instance trouvée"
   },
   "button": {
     "delete": "Supprimer",
