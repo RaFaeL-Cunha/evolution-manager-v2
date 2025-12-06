@@ -349,6 +349,10 @@
         "label": "Importar Contatos",
         "description": "Importar contatos da agenda do WhatsApp ao conectar o QR Code"
       },
+      "mergeBrazilContacts": {
+        "label": "Mesclar Contatos Brasil",
+        "description": "Mescla contatos brasileiros com e sem código de país (55)"
+      },
       "importMessages": {
         "label": "Importar Mensagens",
         "description": "Importar mensagens do WhatsApp ao conectar o QR Code"
