@@ -24,7 +24,10 @@ import { Chatwoot as ChatwootType } from "@/types/evolution.types";
 const stringOrUndefined = z
   .string()
   .optional()
-  .transform((value) => (value === "" ? undefined : value));
+  .transform((value) => {
+    const trimmed = value?.trim();
+    return !trimmed || trimmed === "" ? undefined : trimmed;
+  });
 
 const formSchema = z.object({
   enabled: z.boolean(),
@@ -117,7 +120,7 @@ function Chatwoot() {
       token: data.token,
       url: data.url,
       signMsg: data.signMsg || false,
-      signDelimiter: data.signDelimiter || "\\n",
+      signDelimiter: data.signDelimiter?.trim() || "\\n",
       nameInbox: data.nameInbox || "",
       organization: data.organization || "",
       logo: data.logo || "",
