@@ -369,6 +369,10 @@
         "label": "Import Contacts",
         "description": "Import contacts from WhatsApp address book by connecting QR Code"
       },
+      "mergeBrazilContacts": {
+        "label": "Merge Brazil Contacts",
+        "description": "Merge Brazilian contacts with and without country code (55)"
+      },
       "importMessages": {
         "label": "Import Messages",
         "description": "Import messages from WhatsApp by connecting QR Code"
