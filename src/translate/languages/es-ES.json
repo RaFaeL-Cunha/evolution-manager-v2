@@ -131,6 +131,12 @@
         "restart": "Reiniciar",
         "disconnect": "Desconectar"
       },
+      "toast": {
+        "restart": {
+          "success": "Instancia reiniciada con éxito",
+          "error": "Error al reiniciar instancia"
+        }
+      },
       "alert": "Para conectar, escanea el Código QR con WhatsApp",
       "contacts": "Contactos",
       "chats": "Chats",

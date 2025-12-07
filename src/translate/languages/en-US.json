@@ -151,6 +151,12 @@
         "restart": "Restart",
         "disconnect": "Disconnect"
       },
+      "toast": {
+        "restart": {
+          "success": "Instance restarted successfully",
+          "error": "Error restarting instance"
+        }
+      },
       "alert": "To connect, scan the QR code with your WhatsApp Web",
       "contacts": "Contacts",
       "chats": "Chats",
